@@ -76,7 +76,7 @@ def shortcuts(request):
         "SITE_NAME": settings.SITE_NAME,
         "CATEGORIES": settings.CATEGORIES,
         "BIOSTAR_VERSION": VERSION,
-        "TRAFFIC": get_traffic(),
+        
         'RECENT_REPLIES': get_recent_replies(),
         'RECENT_VOTES': get_recent_votes(),
         "RECENT_USERS": get_recent_users(),
