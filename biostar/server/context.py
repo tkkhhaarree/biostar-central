@@ -38,24 +38,7 @@ def get_recent_replies():
     return posts
 
 
-TRAFFIC_KEY = "traffic"
-
-
-def get_traffic(minutes=60):
-    "Obtains the number of distinct IP numbers "
-    global TRAFFIC_KEY
-    traffic = cache.get(TRAFFIC_KEY)
-    if not traffic:
-        recent = const.now() - timedelta(minutes=minutes)
-        try:
-            traffic = PostView.objects.filter(date__gt=recent).distinct('ip').count()
-        except NotImplementedError as exc:
-            traffic = PostView.objects.filter(date__gt=recent).values_list('ip')
-            traffic = [t[0] for t in traffic]
-            traffic = len(set(traffic))
-        cache.set(TRAFFIC_KEY, traffic, CACHE_TIMEOUT)
-    return traffic
-
+#removed traffic function
 
 def banner_trigger(request, half=settings.HALF_LIFE):
     user = request.user
